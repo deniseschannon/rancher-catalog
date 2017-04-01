@@ -1,9 +1,5 @@
 name: Kubernetes
-<<<<<<< 3e514c10d079f9215360754767c26fb9b613eb67
 version: v1.5.4-rancher1-4
-=======
-version: v1.5.4-rancher2
->>>>>>> drop old data container, selinux support
 category: Orchestration
 labels:
   io.rancher.certified: rancher
