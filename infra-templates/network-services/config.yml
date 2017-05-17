@@ -1,5 +1,5 @@
 name: Network Services
 category: Framework
 labels:
-  io.rancher.certified: rancher
+  io.rancher.certified: test
   io.rancher.orchestration.supported: 'cattle,mesos,swarm,kubernetes'
