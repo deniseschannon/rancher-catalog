@@ -5,7 +5,7 @@
 {{- $etcHostUpdaterImage:="rancher/etc-host-updater:v0.0.3" }}
 {{- $k8sAgentImage:="rancher/kubernetes-agent:v0.6.6" }}
 {{- $k8sAuthImage:="rancher/kubernetes-auth:v0.0.8" }}
-{{- $ingressControllerImage:="rancher/lb-service-rancher:v0.7.16" }}
+{{- $ingressControllerImage:="rancher/lb-service-rancher:v0.7.17" }}
 
 kubelet:
     labels:
