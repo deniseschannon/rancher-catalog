@@ -1,0 +1,11 @@
+name: Kubernetes with etcd v3
+description: Default Kubernetes with etcd v3 template 
+stacks:
+  - name: kubernetes
+    templateId: 'library:infra*k8s-etcdv3'
+  - name: network-services
+    templateId: 'library:infra*network-services'
+  - name: ipsec
+    templateId: 'library:infra*ipsec'
+  - name: healthcheck
+    templateId: 'library:infra*healthcheck'
