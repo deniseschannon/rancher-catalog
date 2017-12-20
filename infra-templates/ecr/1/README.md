@@ -9,6 +9,7 @@ Originally contributed by John Engelman from [Object Partners](http://www.object
 
 ### ecr-updater [rancher/rancher-ecr-credentials:v2.0.1]
 * Added retry logic for AWS and Rancher API calls
+* Added support to update AWS registries in a different environment
 
 ## Why is this needed?
 
@@ -31,6 +32,8 @@ Credentials are loaded in the following order:
 1. IAM Instance Profile (if running on EC2)
 
 > **Note:** Cross account roles are not currently supported.
+
+You can update registries in other environments by providing the environment API endpoint of the environment containing the AWS registry to be updated. You will also need to provide the an Environment API key (access key and secret key) for the environment. 
 
 ## Notes
 

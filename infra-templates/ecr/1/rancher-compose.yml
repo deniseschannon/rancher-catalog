@@ -2,7 +2,7 @@
   name: "ECR Credential Updater"
   version: "v2.0.1"
   description: "Updates credentials for ECR in Rancher"
-  minimum_rancher_version: "v1.5.0"
+  minimum_rancher_version: "v1.6.13-rc1"
   questions:
     - variable: "aws_access_key_id"
       label: "AWS Access Key ID"
@@ -31,6 +31,32 @@
       description: "Logging level to run service at"
       default: "INFO"
       required: true
+      type: "string"
+    - variable: "registry_in_which_environment"
+      type: enum
+      label: "Registry Environment"
+      description: "Which environment is the AWS registry located?"
+      default: current
+      options:
+        - current
+        - other
+    - variable: "environment_api_endpoint"
+      label: "URL (Environment API Endpoint) of Registry to be Updated"
+      description: "URL for where the registry is located. This is the endpoint, which can be found under the Advanced Options under API -> Keys, for an Environment API Key."
+      default: ""
+      required: false
+      type: "string"
+    - variable: "environment_api_access_key"
+      label: "Access Key of an Environment API Key"
+      description: "This access key must be for the environment where the registry will need to be updated. This access key will be created in the same environment listed for the URL. This can be created in the Advanced Options under API."
+      default: ""
+      required: false
+      type: "string"
+    - variable: "environment_api_secret_key"
+      label: "Secret Key of an Environment API Key"
+      description: "This secret key must be for the environment where the registry will need to be updated. This secret key will be created in the same environment listed for the URL. This can be created in the Advanced Options under API."
+      default: ""
+      required: false
       type: "string"
 ecr-updater:
   scale: 1
