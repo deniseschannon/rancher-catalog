@@ -1,5 +1,5 @@
 
-{{- $k8sImage:="rancher/k8s:v1.9.2-rancher1-1" }}
+{{- $k8sImage:="deniseschannon/k8s:dev" }}
 {{- $etcdImage:="rancher/etcd:v2.3.7-13" }}
 {{- $kubectldImage:="rancher/kubectld:v0.8.6" }}
 {{- $etcHostUpdaterImage:="rancher/etc-host-updater:v0.0.3" }}
@@ -419,11 +419,10 @@ addon-starter:
     environment:
         KUBERNETES_URL: https://kubernetes.kubernetes.rancher.internal:6443
         REGISTRY: ${REGISTRY}
+        BASE_IMAGE_NAMESPACE: ${BASE_IMAGE_NAMESPACE}
         INFLUXDB_HOST_PATH: ${INFLUXDB_HOST_PATH}
         DNS_REPLICAS: ${DNS_REPLICAS}
         DNS_CLUSTER_IP: ${DNS_CLUSTER_IP}
-        BASE_IMAGE_NAMESPACE: ${BASE_IMAGE_NAMESPACE}
-        HELM_IMAGE_NAMESPACE: ${HELM_IMAGE_NAMESPACE}
         ADDONS_LOG_VERBOSITY_LEVEL: ${ADDONS_LOG_VERBOSITY_LEVEL}
         DASHBOARD_CPU_LIMIT: ${DASHBOARD_CPU_LIMIT}
         DASHBOARD_MEMORY_LIMIT: ${DASHBOARD_MEMORY_LIMIT}
