@@ -70,6 +70,12 @@
     required: true
     default: true
     type: boolean
+  - variable: DNS_REPLICAS
+    description: Number of replicas for SKY DNS service. Each replica would run on the separate host, so change the value according to your infrastructure.
+    label: Sky DNS service scale
+    required: false
+    default: 1
+    type: int
   - variable: ENABLE_RANCHER_INGRESS_CONTROLLER
     description: Deploy the Rancher ingress controller which automatically provisions Rancher load balancers in response to Kubernetes ingress creation events.
     label: Enable Rancher Ingress Controller
@@ -100,12 +106,6 @@
     required: false
     default: "docker.io/rancher/pause-amd64:3.0"
     type: string
-  - variable: DNS_REPLICAS
-    description: Number of replicas for SKY DNS service. Each replica would run on the separate host, so change the value according to your infrastructure.
-    label: Sky DNS service scale
-    required: false
-    default: 1
-    type: int
   - variable: FAIL_ON_SWAP
     label: Fail on swap
     description: Kubelet will fail if swap is enabled on the host.
