@@ -71,14 +71,8 @@
     default: ""
     type: string
   - variable: BASE_IMAGE_NAMESPACE
-    description: "Image namespace for Add-Ons and Pod Infra Container Image ( Default: google_containers )."
-    label: Image namespace for  Add-Ons and Pod Infra Container Image
-    required: false
-    default: ""
-    type: string
-  - variable: HELM_IMAGE_NAMESPACE
-    description: "Image namespace for kubernetes-helm ( Default: kubernetes-helm )."
-    label: Image namespace for kubernetes-helm Image
+    description: "Repository for Add-Ons and Pod Infra Container Image ( Default: rancher )."
+    label: Repository for Add-Ons and Pod Infra Container Image
     required: false
     default: ""
     type: string
