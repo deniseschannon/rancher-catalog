@@ -1,7 +1,7 @@
 
-{{- $k8sImage:="rancher/k8s:v1.8.5-rancher4" }}
+{{- $k8sImage:="deniseschannon/k8s:dev" }}
 {{- $etcdImage:="rancher/etcd:v2.3.7-13" }}
-{{- $kubectldImage:="rancher/kubectld:v0.8.5" }}
+{{- $kubectldImage:="rancher/kubectld:v0.8.6" }}
 {{- $etcHostUpdaterImage:="rancher/etc-host-updater:v0.0.3" }}
 {{- $k8sAgentImage:="rancher/kubernetes-agent:v0.6.6" }}
 {{- $k8sAuthImage:="rancher/kubernetes-auth:v0.0.8" }}
@@ -196,10 +196,12 @@ kubernetes:
         io.rancher.sidekicks: kube-hostname-updater
         io.rancher.websocket.proxy.port: "6443"
         io.rancher.websocket.proxy.scheme: "https"
+        io.rancher.k8s.service.cluster.ip.range: ${SERVICE_CLUSTER_IP_RANGE}
     command:
         - kube-apiserver
         - --storage-backend=etcd2
-        - --service-cluster-ip-range=${SERVICE_CLUSTER_CIDR}
+        - --storage-media-type=application/json
+        - --service-cluster-ip-range=${SERVICE_CLUSTER_IP_RANGE}
         - --etcd-servers=http://etcd.kubernetes.rancher.internal:2379
         - --insecure-bind-address=0.0.0.0
         - --insecure-port=0
@@ -208,16 +210,18 @@ kubernetes:
         - --cloud-config=/etc/kubernetes/cloud-provider-config
         {{- end }}
         - --allow_privileged=true
-        - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds
+        - --admission-control=$ADMISSION_CONTROLLERS
         - --client-ca-file=/etc/kubernetes/ssl/ca.pem
         - --tls-cert-file=/etc/kubernetes/ssl/cert.pem
         - --tls-private-key-file=/etc/kubernetes/ssl/key.pem
         - --runtime-config=batch/v2alpha1
+        - --anonymous-auth=false
         - --authentication-token-webhook-config-file=/etc/kubernetes/authconfig
         - --runtime-config=authentication.k8s.io/v1beta1=true
         - --external-hostname=kubernetes.kubernetes.rancher.internal
         {{- if eq .Values.AUDIT_LOGS "true" }}
         - --audit-log-path=-
+        - --feature-gates=AdvancedAuditing=false
         {{- end }}
         {{- if eq .Values.RBAC "true" }}
         - --authorization-mode=RBAC
@@ -415,11 +419,10 @@ addon-starter:
     environment:
         KUBERNETES_URL: https://kubernetes.kubernetes.rancher.internal:6443
         REGISTRY: ${REGISTRY}
+        BASE_IMAGE_NAMESPACE: ${BASE_IMAGE_NAMESPACE}
         INFLUXDB_HOST_PATH: ${INFLUXDB_HOST_PATH}
         DNS_REPLICAS: ${DNS_REPLICAS}
         DNS_CLUSTER_IP: ${DNS_CLUSTER_IP}
-        BASE_IMAGE_NAMESPACE: ${BASE_IMAGE_NAMESPACE}
-        HELM_IMAGE_NAMESPACE: ${HELM_IMAGE_NAMESPACE}
         ADDONS_LOG_VERBOSITY_LEVEL: ${ADDONS_LOG_VERBOSITY_LEVEL}
         DASHBOARD_CPU_LIMIT: ${DASHBOARD_CPU_LIMIT}
         DASHBOARD_MEMORY_LIMIT: ${DASHBOARD_MEMORY_LIMIT}
