@@ -1,0 +1,19 @@
+version: '2'
+services:
+  thesidekick:
+    image: busybox
+    stdin_open: true
+    tty: true
+  thesvc:
+    image: busybox
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.sidekicks: thesidekick
+
+  somesvc:
+    image: busybox
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.sidekicks: thesidekick
