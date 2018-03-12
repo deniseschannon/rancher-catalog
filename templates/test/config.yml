@@ -1,4 +1,4 @@
-name: Convoy NFS
+name: Sidekick Test
 description: |
   Docker Volume Manager for NFS-backed Volumes
 version: v0.1.0
