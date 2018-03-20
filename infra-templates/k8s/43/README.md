@@ -11,7 +11,7 @@ Warning: The existing template version _must be_ `v1.2.4-rancher9` or later. Ign
 
 ### Changelog for Kubernetes v1.8.10
 
-* Updated for the latest Kubernetes release, which contains regression fix.
+* Updated for the latest Kubernetes release, which contains regression fixes in Kubernetes.
 
 ### Required Open Ports on hosts
 

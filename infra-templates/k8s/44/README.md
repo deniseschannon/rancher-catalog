@@ -1,15 +1,15 @@
-## Kubernetes v1.9.4
+## Kubernetes v1.9.5
 
 ### Software Versions
 
-* Kubernetes v1.9.4
+* Kubernetes v1.9.5
 * Etcd v2.3.7
 
 ### Upgrading to this Version
 
 Warning: The existing template version _must be_ `v1.2.4-rancher9` or later. Ignoring this will result in data loss. For older templates, please first upgrade to `v1.5.4-rancher1`.
 
-### Changelog for Kubernetes v1.9.4
+### Changelog for Kubernetes v1.9.5
 
 * Switched the default add-on images (dashboard, dns, dashboard, etc) to be pulled from Rancher's repo in Dockerhub instead of GCR. The location is still configurable, but the default pulls from Rancher instead of GCR.
 * Fixed an issue with conntrack entries being deleted incorrectly for Service IP range.
