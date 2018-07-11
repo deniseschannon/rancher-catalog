@@ -13,7 +13,9 @@ Warning: If you are using the `aws` cloud provider, tagging your cluster resourc
 
 ### Changelog for Kubernetes v1.10.5
 
-* Updated for the latest Kubernetes release.
+* Updated for the latest Kubernetes release
+* Fixed an issue where HPA wasn't working
+* Fixed an issue where k8s ingress controller was not updating node IPs when there are a large number of ingresses on several hosts
 * Added loglevel to `kubernetes-agent` and `lb-service-rancher` services to help with debugging
 
 ### Required Open Ports on hosts
