@@ -1,8 +1,8 @@
 .catalog:
   name: Kubernetes
-  version: v1.10.5-rancher1-4-1
+  version: v1.10.11-rancher1-1
   description: Rancher Kubernetes service
-  minimum_rancher_version: v1.6.19-rc1
+  minimum_rancher_version: v1.6.18-a
   maximum_rancher_version: v1.6.21
   questions:
   - variable: CONSTRAINT_TYPE
